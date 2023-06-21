@@ -186,7 +186,7 @@ public class Battle_Handler : MonoBehaviour
         successText.text = "";
         switch (action) {
             case "Attack": {
-                Utils.currentLanguage = "hiragana3";
+                Utils.currentLanguage = "hiraganavowels";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -204,7 +204,7 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Guard": {
-                Utils.currentLanguage = "hiragana3";
+                Utils.currentLanguage = "hiraganavowels";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
