@@ -497,7 +497,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void PrepareWantedChar() {
-        wantedCharText.text = "Please draw\n" + Utils.KanaToRomaji(Utils.PrepareWantedChar(true, true).ToString());
+        wantedCharText.text = "Please draw\n" + Utils.KanaToRomaji(Utils.PrepareWantedChar(true, true));
     }
 
     IEnumerator WaitForTesseract(Action doAction) {

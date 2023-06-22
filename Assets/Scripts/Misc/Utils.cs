@@ -372,7 +372,7 @@ public class Utils
     }
 
     public static string KanaToRomaji(string kana) {
-        return kanaToRomaji[kana];
+        return kanaToRomaji[kana[0].ToString()] + kana.Substring(1);
     }
 
     private static void InitUnitData() {
@@ -431,7 +431,7 @@ public class Utils
         // Format: "Enemy_Name: sizeX sizeY offsetX offsetY"
         string dataString = "Flower: +0.66 +1.23 +0.00 -0.39\n" +
                             "Masked Doctor: +0.94 +1.26 -0.28 -0.37\n" +
-                            "Cavern Monster: +0.57 +0.60 -0.12 -0.20" +
+                            "Cavern Monster: +0.57 +0.60 -0.12 -0.20\n" +
                             "Serpent: +0.50 +1.67 -0.34 -0.14";
 
         ArrayList data = new ArrayList() { dataString };
@@ -560,7 +560,16 @@ public class Utils
         string enemyData = "[Enemies]:\n" +
                             "Flower: +60.00, -1.00,\n" +
                             "Serpent: +120.00, +8.00,\n" +
-                            "Cavern Monster: +225.00, -59.00,\n";
+                            "Cavern Monster: +225.00, -59.00,\n" +
+                            "Masked Doctor: +255.00, -57.00,\n" +
+                            "Flower: +255.00, -49.00,\n" +
+                            "Flower: +321.00, -55.00,\n" +
+                            "Cavern Monster: +332.00, -51.00,\n" +
+                            "Serpent: +341.00, -47.00,\n" +
+                            "Masked Doctor: +330.00, -43.00,\n" +
+                            "Flower: +261.00, -33.00,\n" +
+                            "Masked Doctor: +100.00, +13.00,\n" + 
+                            "Flower: +139.00, +3.00,\n";
         string playerData = "[Player]: -3.00, -1.00,";
 
         ArrayList levels = new ArrayList() { levelData, enemyData, playerData };
