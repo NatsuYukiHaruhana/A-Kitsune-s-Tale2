@@ -39,10 +39,20 @@ public class Utils
         { "き", "ki" },
         { "く", "ku" },
         { "け", "ke" },
-        { "こ", "ko" }
+        { "こ", "ko" },
+        { "ア", "a" },
+        { "イ", "i" },
+        { "ウ", "u" },
+        { "エ", "e" },
+        { "オ", "o" },
+        { "カ", "ka" },
+        { "キ", "ki" },
+        { "ク", "ku" },
+        { "ケ", "ke" },
+        { "コ", "ko" }
     };
 
-    public static char wantedChar = '\0';
+    public static string wantedChar = "";
 
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -83,8 +93,8 @@ public class Utils
         LoadTeamData();
     }
 
-    public static char PrepareWantedChar(bool allowHiragana, bool allowKatakana) {
-        if (wantedChar != '\0') {
+    public static string PrepareWantedChar(bool allowHiragana, bool allowKatakana) {
+        if (wantedChar != "") {
             return wantedChar;
         }
 
@@ -97,7 +107,7 @@ public class Utils
         }
 
         if (count == 0) {
-            return '\0';
+            return "";
         }
 
         SortedList<string, float> possibleChars = new SortedList<string, float>();
@@ -125,7 +135,21 @@ public class Utils
         }
 
         if (selectLowestValue || amountWithLowestValue == ordered.Count) {
-            wantedChar = ordered[UnityEngine.Random.Range(0, amountWithLowestValue)].Key[0];
+            wantedChar = ordered[UnityEngine.Random.Range(0, amountWithLowestValue)].Key;
+
+            if ("あいうえお".IndexOf(wantedChar) != -1) {
+                currentLanguage = "hiraganavowels";
+                wantedChar += " in hiragana.";
+            } else if ("かきくけこ".IndexOf(wantedChar) != -1) {
+                currentLanguage = "hiraganak";
+                wantedChar += " in hiragana.";
+            } else if ("アイウエオ".IndexOf(wantedChar) != -1) {
+                currentLanguage = "katakanavowels";
+                wantedChar += " in katakana.";
+            } else if ("カキクケコ".IndexOf(wantedChar) != -1) {
+                currentLanguage = "katakanak";
+                wantedChar += " in katakana.";
+            }
         } else {
             SortedList<string, float> newList = new SortedList<string, float>();
 

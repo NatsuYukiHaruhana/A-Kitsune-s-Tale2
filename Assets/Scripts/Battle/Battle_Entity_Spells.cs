@@ -13,7 +13,7 @@ public abstract class Battle_Entity_Spells
     protected string spellName;
     protected string spellDesc;
 
-    protected string spellChars;
+    protected char spellChars;
 
     protected Battle_Entity.Faction allowedTargets;
 
@@ -31,7 +31,7 @@ public abstract class Battle_Entity_Spells
                             int requiredLevel, 
                             string spellDesc, 
                             string spellName, 
-                            string spellChars,
+                            char spellChars,
                             Battle_Entity.Faction allowedTargets,
                             string sFX,
                             string animatorController) { 
@@ -60,7 +60,7 @@ public abstract class Battle_Entity_Spells
         return spellDesc;
     }
 
-    public string GetSpellChars() {
+    public char GetSpellChars() {
         return spellChars;
     }
 

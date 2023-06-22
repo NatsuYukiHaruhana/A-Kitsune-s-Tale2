@@ -12,7 +12,7 @@ public class Shadow : Battle_Entity_Spells {
             1,
             "The user calls upon the forbidden dark arts to conjure an energy sphere of shadow.",
             "Shadow",
-            "影",
+            '暗',
             Battle_Entity.Faction.Enemy,
             "Audio/SFX/Shadow",
             "Animations/Spells/Shadow") { }

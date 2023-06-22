@@ -73,7 +73,7 @@ public class ScreenshotHandler : MonoBehaviour
         bool saved = false;
         while (!saved) {
             Utils.saveToFile = text.text + i + ".png";
-            if (File.Exists(Application.persistentDataPath + "/test_data/" + Utils.saveToFile)) {
+            if (File.Exists(Application.persistentDataPath + "/test_data/katakana/" + Utils.saveToFile)) {
                 i++;
             } else {
                 saved = true;
@@ -81,7 +81,7 @@ public class ScreenshotHandler : MonoBehaviour
         }
 
         byte[] byteArray = screenShot.EncodeToPNG();
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/test_data/" + Utils.saveToFile, byteArray);
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/test_data/katakana/" + Utils.saveToFile, byteArray);
         Debug.Log("Saved" + Utils.saveToFile);
 
         Destroy(renderTexture);

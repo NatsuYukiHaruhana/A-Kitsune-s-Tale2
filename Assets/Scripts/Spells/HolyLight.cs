@@ -12,7 +12,7 @@ public class HolyLight : Battle_Entity_Spells {
             1,
             "The user calls upon the holy arts to conjure an energy sphere of light.",
             "Holy Light",
-            "光",
+            '光',
             Battle_Entity.Faction.Enemy,
             "Audio/SFX/Light",
             "Animations/Spells/Light") { }

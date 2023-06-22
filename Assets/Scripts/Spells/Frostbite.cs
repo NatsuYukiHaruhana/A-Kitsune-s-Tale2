@@ -12,7 +12,7 @@ public class Frostbite : Battle_Entity_Spells {
             1,
             "The user calls upon the power of ice to summon crystals which slash the enemy.",
             "Frostbite",
-            "氷",
+            '氷',
             Battle_Entity.Faction.Enemy,
             "Audio/SFX/Frostbite",
             "Animations/Spells/Frostbite") { }

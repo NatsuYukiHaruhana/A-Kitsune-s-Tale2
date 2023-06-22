@@ -186,7 +186,6 @@ public class Battle_Handler : MonoBehaviour
         successText.text = "";
         switch (action) {
             case "Attack": {
-                Utils.currentLanguage = "hiraganavowels";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -204,7 +203,6 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Guard": {
-                Utils.currentLanguage = "hiraganavowels";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -476,10 +474,25 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        //if (TesseractHandler.GetRecognizedText() == selectedSpell.GetSpellChars()) {
-            selectedSpell.CastSpell(targets, units[unitTurn]);
-        //}
+        string recognizedText = TesseractHandler.GetRecognizedText();
+        bool found = false;
+        foreach (char c in recognizedText) {
+            if (c == Utils.wantedChar[0]) {
+                selectedSpell.CastSpell(targets, units[unitTurn]);
+                found = true;
+                break;
+            }
+        }
 
+        if (found) {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
+            successText.text = "Correct!";
+            voiceManager.PlaySound(Utils.wantedChar.ToString());
+        } else {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), -10f);
+            successText.text = "Wrong! We asked for: " + Utils.wantedChar;
+        }
+        Utils.wantedChar = "";
         NextTurn();
     }
 
@@ -516,7 +529,7 @@ public class Battle_Handler : MonoBehaviour
         string recognizedText = TesseractHandler.GetRecognizedText();
         bool found = false;
         foreach (char c in recognizedText) {
-            if (c == Utils.wantedChar) {
+            if (c == Utils.wantedChar[0]) {
                 units[unitTurn].BasicAttack(targets);
                 found = true;
                 break;
@@ -529,9 +542,9 @@ public class Battle_Handler : MonoBehaviour
             voiceManager.PlaySound(Utils.wantedChar.ToString());
         } else {
             Utils.ModifyKanaData(Utils.wantedChar.ToString(), -10f);
-            successText.text = "Wrong! We asked for: " + Utils.wantedChar + "!";
+            successText.text = "Wrong! We asked for: " + Utils.wantedChar;
         }
-        Utils.wantedChar = '\0';
+        Utils.wantedChar = "";
         NextTurn();
     }
 
@@ -545,7 +558,7 @@ public class Battle_Handler : MonoBehaviour
         string recognizedText = TesseractHandler.GetRecognizedText();
         bool found = false;
         foreach (char c in recognizedText) {
-            if (c == Utils.wantedChar) {
+            if (c == Utils.wantedChar[0]) {
                 units[unitTurn].BasicAttack(targets);
                 found = true;
                 break;
@@ -558,9 +571,9 @@ public class Battle_Handler : MonoBehaviour
             voiceManager.PlaySound(Utils.wantedChar.ToString());
         } else {
             Utils.ModifyKanaData(Utils.wantedChar.ToString(), -10f);
-            successText.text = "Wrong! We asked for: " + Utils.wantedChar + "!";
+            successText.text = "Wrong! We asked for: " + Utils.wantedChar;
         }
-        Utils.wantedChar = '\0';
+        Utils.wantedChar = "";
         NextTurn();
     }
 

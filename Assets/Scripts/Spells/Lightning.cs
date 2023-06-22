@@ -12,7 +12,7 @@ public class Lightning : Battle_Entity_Spells {
             1,
             "The user calls upon the power of electricity to call forth a great bolt of lightning upon their enemy.",
             "Lightning",
-            "電",
+            '川',
             Battle_Entity.Faction.Enemy,
             "Audio/SFX/Lightning",
             "Animations/Spells/Lightning") { }

@@ -103,6 +103,24 @@ public class Platforming_Stage_Handler : MonoBehaviour
         Utils.SaveKanaData();
     }
 
+    public void AddThirdBatchOfKana() {
+        Utils.AddKanaData("ア");
+        Utils.AddKanaData("イ");
+        Utils.AddKanaData("ウ");
+        Utils.AddKanaData("エ");
+        Utils.AddKanaData("オ");
+        Utils.SaveKanaData();
+    }
+
+    public void AddFourthBatchOfKana() {
+        Utils.AddKanaData("カ");
+        Utils.AddKanaData("キ");
+        Utils.AddKanaData("ク");
+        Utils.AddKanaData("ケ");
+        Utils.AddKanaData("コ");
+        Utils.SaveKanaData();
+    }
+
     public void LowerYLevel() {
         Utils.yLimit = -70f;
 

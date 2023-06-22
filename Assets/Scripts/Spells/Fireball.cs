@@ -12,7 +12,7 @@ public class Fireball : Battle_Entity_Spells {
             1,
             "The user calls upon the power of fire to create a concentrated ball of fire to throw towards their enemies.",
             "Fireball",
-            "火玉",
+            '火',
             Battle_Entity.Faction.Enemy,
             "Audio/SFX/Fireball",
             "Animations/Spells/Fireball") {}
