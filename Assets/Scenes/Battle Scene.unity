@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218489612}
   m_HandleRect: {fileID: 1218489611}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2286,6 +2286,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2827144362640211028, guid: 436822785d8ea734ba91afa7a3743147,
+        type: 3}
+      propertyPath: loopBGM
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827144362640211028, guid: 436822785d8ea734ba91afa7a3743147,
+        type: 3}
+      propertyPath: BGMs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827144362640211028, guid: 436822785d8ea734ba91afa7a3743147,
+        type: 3}
+      propertyPath: BGMs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: deaa0fe100caecf4ca06bfe949df985c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 436822785d8ea734ba91afa7a3743147, type: 3}
 --- !u!4 &558556944 stripped
@@ -4383,7 +4398,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 757984913}
   m_HandleRect: {fileID: 757984912}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7271,8 +7286,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 942318700}
   m_HandleRect: {fileID: 942318699}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16160,8 +16175,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 853856434}
   m_HandleRect: {fileID: 853856433}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

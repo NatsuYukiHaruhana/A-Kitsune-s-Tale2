@@ -24,7 +24,9 @@ public class Music_Manager : MonoBehaviour {
 
     private void Update() {
         if (keepPlaying == true && audioSrc.isPlaying == false) {
-            currentlyPlaying++;
+            if (!loopBGM) {
+                currentlyPlaying++;
+            }
 
             if (currentlyPlaying == BGMs.Count) {
                 if (loopList == true) {
@@ -41,5 +43,14 @@ public class Music_Manager : MonoBehaviour {
                 audioSrc.Stop();
             }
         }
+    }
+
+    public void NextTrack() {
+        audioSrc.Stop();
+
+        currentlyPlaying = 1;
+        
+        audioSrc.clip = BGMs[currentlyPlaying];
+        audioSrc.Play();
     }
 }

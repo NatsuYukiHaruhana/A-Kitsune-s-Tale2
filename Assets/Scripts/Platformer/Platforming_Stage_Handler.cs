@@ -11,6 +11,8 @@ public class Platforming_Stage_Handler : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private Enemy_Handler enemyHandler;
+    [SerializeField]
+    private Music_Manager musicManager;
 
     private Transform playerTrans;
     private Vector3 respawnPlayerPos;
@@ -123,6 +125,7 @@ public class Platforming_Stage_Handler : MonoBehaviour
 
     public void LowerYLevel() {
         Utils.yLimit = -70f;
+        musicManager.NextTrack();
 
         if (Utils.backgroundUsed == 1) {
             GameObject.Find("Background Forest").SetActive(false);

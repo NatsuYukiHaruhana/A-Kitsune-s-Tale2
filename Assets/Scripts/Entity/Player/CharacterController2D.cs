@@ -225,7 +225,51 @@ public class CharacterController2D : MonoBehaviour {
 				if (receiver != null) {
 					receiver.SendMessage(message);
 				}
-			}
+			} else if (collision.gameObject.CompareTag("Enemy")) {
+                if (!triggerCollider.enabled) {
+                    return;
+                }
+                if (collision.gameObject.GetComponent<EnemyBehaviour>().GetIsInvincible()) {
+                    return;
+                }
+
+                Transform enemyTransform = collision.gameObject.transform;
+                if (enemyTransform.position.x > transform.position.x && !facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                } else if (enemyTransform.position.x < transform.position.x && facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                }
+
+                Utils.SavePlayerPosition(transform.position);
+                Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
+                Utils.enemyToBattleIndex = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetIndex();
+                SceneManager.LoadScene("Battle Scene");
+            }
+        }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision) {
+        if (collision != null) {
+            if (collision.gameObject.CompareTag("Enemy")) {
+                if (!triggerCollider.enabled) {
+                    return;
+                }
+                if (collision.gameObject.GetComponent<EnemyBehaviour>().GetIsInvincible()) {
+                    return;
+                }
+
+                Transform enemyTransform = collision.gameObject.transform;
+                if (enemyTransform.position.x > transform.position.x && !facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                } else if (enemyTransform.position.x < transform.position.x && facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                }
+
+                Utils.SavePlayerPosition(transform.position);
+                Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
+                Utils.enemyToBattleIndex = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetIndex();
+                SceneManager.LoadScene("Battle Scene");
+            }
         }
     }
 

@@ -291,10 +291,6 @@ public class Battle_Handler : MonoBehaviour
 
         arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
         arrows[currentUnit].SetVisible(false);
-
-        if (units[currentUnit].GetFaction() == Battle_Entity.Faction.Enemy) {
-            units[currentUnit].TakeDamage(units[currentUnit].GetStats().maxHP - 10, DamageType.Physical);
-        }
     }
 
     private void LoadItems(List<Item> items) {
@@ -463,6 +459,8 @@ public class Battle_Handler : MonoBehaviour
             }
         }
 
+        PrepareWantedChar();
+
         SelectTargets();
 
         drawBoardParent.SetActive(true);
@@ -478,13 +476,13 @@ public class Battle_Handler : MonoBehaviour
         bool found = false;
         foreach (char c in recognizedText) {
             if (c == Utils.wantedChar[0]) {
-                selectedSpell.CastSpell(targets, units[unitTurn]);
                 found = true;
                 break;
             }
         }
 
         if (found) {
+            selectedSpell.CastSpell(targets, units[unitTurn]);
             Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
             successText.text = "Correct!";
             voiceManager.PlaySound(Utils.wantedChar.ToString());
@@ -530,13 +528,13 @@ public class Battle_Handler : MonoBehaviour
         bool found = false;
         foreach (char c in recognizedText) {
             if (c == Utils.wantedChar[0]) {
-                units[unitTurn].BasicAttack(targets);
                 found = true;
                 break;
             }
         }
 
         if (found) {
+            units[unitTurn].BasicAttack(targets);
             Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
             successText.text = "Correct!";
             voiceManager.PlaySound(Utils.wantedChar.ToString());
@@ -559,13 +557,13 @@ public class Battle_Handler : MonoBehaviour
         bool found = false;
         foreach (char c in recognizedText) {
             if (c == Utils.wantedChar[0]) {
-                units[unitTurn].BasicAttack(targets);
                 found = true;
                 break;
             }
         }
 
         if (found) {
+            units[unitTurn].RaiseGuard();
             Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
             successText.text = "Correct!";
             voiceManager.PlaySound(Utils.wantedChar.ToString());
@@ -721,7 +719,7 @@ public class Battle_Handler : MonoBehaviour
         stats.currXP = stats.maxXP / 4f;
 
         // Set stats according to an arbitrary range
-        stats.currHP = stats.maxHP = UnityEngine.Random.Range(100 * stats.level / 2, 100 * stats.level);
+        stats.currHP = stats.maxHP = UnityEngine.Random.Range(100 * stats.level / 2, 100 * stats.level) / 2f;
         stats.currMana = stats.maxMana = UnityEngine.Random.Range(100 * stats.level / 2, 100 * stats.level);
         stats.res = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
         stats.str = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);

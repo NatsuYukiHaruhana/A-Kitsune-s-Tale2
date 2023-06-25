@@ -29,6 +29,11 @@ public class Utils
     
     public static float yLimit = -10f;
 
+    private static List<Pair<string, string>> kanaRows = new List<Pair<string, string>>() { new Pair<string, string>("hiraganavowels", "あいうえお"),
+                                                                                            new Pair<string, string>("hiraganak", "かきくけこ"),
+                                                                                            new Pair<string, string>("katakanavowels", "アイウエオ"),
+                                                                                            new Pair<string, string>("katakanak", "カキクケコ")};
+
     private static Dictionary<string, string> kanaToRomaji = new Dictionary<string, string>() {
         { "あ", "a" },
         { "い", "i" },
@@ -137,18 +142,16 @@ public class Utils
         if (selectLowestValue || amountWithLowestValue == ordered.Count) {
             wantedChar = ordered[UnityEngine.Random.Range(0, amountWithLowestValue)].Key;
 
-            if ("あいうえお".IndexOf(wantedChar) != -1) {
-                currentLanguage = "hiraganavowels";
-                wantedChar += " in hiragana.";
-            } else if ("かきくけこ".IndexOf(wantedChar) != -1) {
-                currentLanguage = "hiraganak";
-                wantedChar += " in hiragana.";
-            } else if ("アイウエオ".IndexOf(wantedChar) != -1) {
-                currentLanguage = "katakanavowels";
-                wantedChar += " in katakana.";
-            } else if ("カキクケコ".IndexOf(wantedChar) != -1) {
-                currentLanguage = "katakanak";
-                wantedChar += " in katakana.";
+            foreach(Pair<string, string> kanaRow in kanaRows) {
+                if (kanaRow.Second.IndexOf(wantedChar) != -1) { // if wanted character is in this row
+                    currentLanguage = kanaRow.First; // set the current language to this row
+
+                    if (kanaRows.IndexOf(kanaRow) < kanaRows.Count / 2) { // if we found this in the first half, it's a hiragana row
+                        wantedChar += " in hiragana.";
+                    } else { // otherwise it's a katakana row
+                        wantedChar += " in katakana.";
+                    }
+                }
             }
         } else {
             SortedList<string, float> newList = new SortedList<string, float>();
